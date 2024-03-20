@@ -75,4 +75,3 @@ function adicionarCardPokemon(pokemon) {
 
 }
 
-carregarPokemons()
