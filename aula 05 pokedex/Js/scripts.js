@@ -1,12 +1,20 @@
 
 
-const pokemons = []
+
 
 
 function carregarPokemons () {
 
 
-    const pokemon1 = {
+
+    const requiicaoHttp = new XMLHttpRequest()
+    requiicaoHttp.open("GET", "https://pokeapi.co/api/v2/pokemon/", false)
+    requiicaoHttp.send()
+
+    const resposta = JSON.parse(requiicaoHttp.responseText)
+    const pokemons = resposta.results
+
+  /* const pokemon1 = {
         Id: 1,
         nome: "bulbasaur",
         imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
@@ -49,14 +57,17 @@ function carregarPokemons () {
 
 
 
-pokemons.push(pokemon1, pokemon2, pokemon3, pokemon4, pokemon5)
+pokemons.push(pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, )*/
 
 
 for(let index = 0 ; index <pokemons.length; index ++){
     const pokemon = pokemons[index]
-    adicionarCardPokemon(pokemon)
+    const id = index + 1
+    pokemon.imagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"+ id + ".png"
 
-}
+    adicionarCardPokemon(pokemon)
+    adicionarPokemon(pokemon)
+}    
 
 }
 
@@ -75,3 +86,15 @@ function adicionarCardPokemon(pokemon) {
 
 }
 
+function adicionarPokemon(pokemon) {
+
+
+    const nomeElemento = document.createElement("h2")
+
+    nomeElemento.innerHTML = pokemon.name
+
+    const divElemento = document.getElementById ("conteudo-pokemon")
+
+    divElemento.appendChild(nomeElemento)
+
+}
