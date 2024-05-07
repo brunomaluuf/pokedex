@@ -40,7 +40,7 @@ function carregarPokemons(){
     } */
 
     fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
- .then(function (response) {
+ .then(function brigadeiro (response) {
     const promiseData = response.json();
     console.log(promiseData);
 
